@@ -1,0 +1,7 @@
+git init
+git add filename
+git commit -m "message"
+get restore filename
+git remote -v
+git checkout branchname
+git branch
