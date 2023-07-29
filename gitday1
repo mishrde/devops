@@ -5,3 +5,5 @@ get restore filename
 git remote -v
 git checkout branchname
 git branch
+git config --global user.name "mishrde"
+git config --global user.email "xyz"
