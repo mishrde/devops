@@ -1,0 +1,330 @@
+TCC- Trading and Client connectivity
+
+https://btobits.com/fixopaedia/fixdic44/tag_34_MsgSeqNum_.html
+
+FIX supports multiple formats and types of communication b/w financial entites like
+email,testing trade allocation,order submission,order changes,excetution reports
+
+FIX protocol is owned and managed by FIX protocol Ltd. , a non profit financial organization created in 1999.
+Latest version is 5.0 released in 2006.
+First Fix version was 2.7 created in 1995.
+
+
+The Financial Information Exchange ("FIX") protocol is basically a standard for passing trading and securities transaction data messages over TCPIP network.
+It is a messaging standard for the real time electronic exchange of securities transaction data.
+
+FIX 4.0 used specially for equities.
+FIX 4.2 used by maximum organizations.
+FIX 4.4 used by equities,derivatives,Fixed incomes and FOREX.
+
+
+Sell side brokers:
+Bank of America, UBS, Barclays capital, BNP paribas etc.
+
+Exchanges:
+SHAI,SSE,SZHEN,BSE,American stock exchange
+
+Buy side instituions:
+Credit suisse,Fidelity managment.
+
+
+
+Tag= Value|
+
+Tags:
+
+official Tags:
+Tags are from 1 to 4999. Defined by FIX protocol.
+
+User defined Tags:
+Tags are from 5000 to 9999. Are defined by companies. They are then propsed to FIX protocol which decide whether to accept/reject.
+if accepted, it can then used by other companies.
+
+Internal use tags:
+Tags over 10000, are for internal use specifically. So, it can varies from company to company.
+
+
+One thing to keep in in mind, both the parties needs to be in the same version to pass the message to each other, unless one party is using 5.0
+
+
+CLIENTS <---> BROKERS <--->EXCHANGE
+
+
+Clients which are going to send the orders to buy and sell securities. We also refer client as customers. 
+They are buy side institutions for example institutional investors, asset management firm etc.
+
+Brokers/market Makers 
+This party receives the order via FIX by their customers.
+There main job is to provide fills/executions to their customer orders, either by executing from their own inventory or
+by sending the order to the exchange 
+
+
+Exchanges or external Destinations or Brokers/market makers
+They receives the orders from brokers via FIX and provide executions.
+
+
+
+|tag=value|tag=value|
+
+The messages are composed with tag and value pair. Separated by delimiter |.
+
+For example. 
+|8=FIX.4.2 | 9=67 | 35=8
+8, 9, 35 these are called tags
+And the value on the right side of = are called the values of the tags.
+
+
+A FIX message is composed of several tag=value pairs. These pairs are always divided into three distinct sections:
+the Header, 
+the Body 
+the Trailer
+
+
+A fix connection between two parties  is called a fix session.
+A FIX session is layered on Transmission Control Protocol (TCP/IP1) and must always follow three steps 
+1 Connection
+2 Message exchange
+3 Disconnection
+
+The Initiator (i.e customer or client) initiates the connection
+The Acceptor (i.e broker-dealer/Valdi) authenticates the connection request and accepts it.
+
+Once physical connection is established between the two parties:
+1. The initiator sends a Logon message to the acceptor.
+2. The session acceptor authenticates the party requesting connection.
+3. The acceptor issues a Logon message reply as acknowledgment that the connection request has been accepted.
+
+The first message of a FIX session is always the connection message also referred to as Logon (35=A). 
+The Logon message(35=A) authenticates a trading partner establishing a connection to a remote system.
+The Logon message must be the first message sent by the application requesting to initiate a FIX session.
+
+When Both parties are not sending any data, to maintain the connection a heartbeat message(35=0) is sent every few seconds.
+
+There are two types of fix messages:
+
+Session level msgs/Administrative Msgs:
+
+These msgs are used for protocol needs.
+They ensure connection b/w 2 parties(connection,dissconnection,data recovery)
+They are generated from both sides of connection.
+
+Header:
+8,9,35,34,49,52,56
+
+Body:
+98,141,108
+98=0(The message is not encrypted)
+
+108=1200(There is 1200 seconds interval b/w each heartbeat)
+
+Trailer:
+10
+Checksum/end of message
+
+
+34=?
+FIX message is identified with unique sequence number. Sequence number enable clients and server applications to make sure they recieve all msgs.
+It increments during session.
+Can be reset during session.
+Enables each party to react missed msgs.
+Enables party to synchronize when recording.
+ 
+
+Admin messages:
+(35=?)
+Logon              =A
+Heartbeat          =0
+Test Request       =1
+Resend Request     =2
+Reject             =3
+Sequence Reset     =4
+Logout             =5
+Order Cancel       =F
+reduce/increase quantity, change limit price, change instructions(Order cancel+replace)= G
+
+
+35=0
+Heartbeat messages are only sent when either party has no other information to sent.
+It just maintains the communication link.
+
+35=1
+If initiator doesnt receive response for hearbeat(35=0) ,it will send a test request(35=1) to reciever
+
+35=2
+resend request is sent by recieving application to ask for retranismission of messages.
+Is occurs when there is a gap of sequence no ap(34=)
+
+35=3
+Reject message should be issued when a message is recieved and cannot be processed.
+
+ 
+
+
+Application level msgs:
+It deals with sending and recieving of trade-related information.
+
+
+100+ msg types
+New order – single(D)
+Execution report(8)
+Order cancel/replace request(G)
+Order cancel request(F)
+Allocation(J)
+Trade Capture Report
+Confirmation
+
+
+
+Example:
+
+|8=FIX.4.2|9=173|35=D|49=PROBE2|56=MESSENGER2|34=4|
+57=20810.1810|52=20090224-10:15:35|11=UserCME01|
+1=UserCME01|5148=-2|82=54|77=O|9702=1|9706=C|
+21=1|44=9320|47=A|fCME008700056|54=2|38=8188|59=0|
+40=2|60=20090224-10:34:00|10=068|
+
+
+Tag   Name              Meaning
+55    Symbol            Ticker Symbol/Stock Symbol
+54    Side              1(BUY); 2(SELL)
+40    Order type        1(market) ;2(Limit);3(Stop)
+38    Order Quantity
+44    Price             Transaction Price
+60    Transaction Time
+39    Order Status     Order status(cancel/open/partial filled)
+
+
+
+|8=FIX.4.2|9=173|35=D|49=PROBE2|56=MESSENGER2|34=4|
+57=20810.1810|52=20090224-10:15:35|11=UserCME01|
+1=UserCME01|5148=-2|82=54|77=O|9702=1|9706=C|
+21=1|44=9320|47=A|55=CME008700056|54=2|38=8188|59=0|
+40=2|60=20090224-10:34:00|10=068|
+
+8=FIX 4.2
+FIX protocol 4.2
+
+9=75
+message has body length of 75
+
+35=A
+Message type is Logon message.
+
+49=PROBE2
+Firm sending message as PROBE2(sendercompID)
+
+56=MESSENGER2
+Firm recieving message as as MESSENGER2(tragetcompID)
+
+34=4
+Sequence number of message is 4.
+
+52=20090224-10:15:35
+Message was transmitted on 24th Feb 2009 at 10:15:35(sending time)
+
+
+
+Last and manadatory field is trailer i.e tag 10
+
+checksum(10=)
+tells end of message.
+
+
+
+==========================================================================
+
+
+
+fixmate
+
+Initial msg has 8,34,35,49,56,52
+
+when 35=A then 34 =1 always
+1=accountid identified
+11=client identified
+15=currency
+14=Total quantity filled.
+38=quantity ordered
+35=Msg type(admin msg)
+39=order status
+40=order type(market 1 or limit 2)
+44=price only when 40=2 i.e limit order)
+48=ISIN
+49=sender
+56=receiver
+54=buy1 or sell2
+55=stock code
+59 =0(day) or 6(GTD) or 2(opening)
+58=rejection reason
+526 or 10939=Orderid
+59=TimeInForce(GTC/GTD)
+126=ExpireTime 
+60=Time of execution/order creation
+150= Exce type
+151=Quantity open for further execution. If the OrdStatus <39> is 'Canceled', 'DoneForTheDay', 'Expired', 'Calculated', or' Rejected' then LeavesQty <151> could be 0,
+otherwise LeavesQty <151> = OrderQty <38> - CumQty <14>.
+
+
+
+Order Status
+(39=?)
+
+0          New
+1          Partially Filled
+2          Filled
+3          Donefor day
+4          Cancelled  
+5          Removed/Replaced
+6          Pending Cancel
+7          Stopped
+8          Rejected
+9          Suspended
+A          Pending New
+B          Calculated
+C          Expired
+
+
+Admin/Msg type messages:
+(35=?)
+Logon              =A
+Heartbeat          =0
+Test Request       =1
+Resend Request     =2
+Reject             =3
+Sequence Reset     =4
+Logout             =5
+Order Cancel       =F
+
+
+ 8=FIX.4.2|9=310|35=D|49=ATRREDI|56=AUTEXREDI|115=KDNS|128=HSBC2215|116=r152750|129=ALGO|34=280|52=20230530-23:33:02|11=7u2ogAJH0096F1P|
+ 1=HSBC_SWAP|21=1|100=T|55=4901.T|48=4901.T|22=5|54=2|60=20230530-23:33:02|38=3700|40=2|44=9042.50000000|15=JPY|59=0|47=A|775=1|7001=DYNAPOV|
+ 7003=15|7008=10|7050=1|7051=1|7052=1|7056=8|7068=0|10=062|
+
+
+
+|8=FIX.4.2|9=173|35=D|49=PROBE2|56=MESSENGER2|34=4|
+57=20810.1810|52=20090224-10:15:35|11=UserCME01|
+1=UserCME01|5148=-2|82=54|77=O|9702=1|9706=C|
+21=1|44=9320|47=A|55=CME008700056|54=2|38=8188|59=0|
+40=2|60=20090224-10:34:00|10=068|
+
+how many types of delimeter there?
+
+order quantity,buy/sell type,price,time,stock code/name,exchange name,isin reason,executed or not???
+
+1. Admin Messages : 
+These messages includes various messages like Heartbeat(0), Test Request(1), Resend Request(2), Reject(3), Sequence Reset(4), Logout(5) and Logon(A).
+
+2. Application Messages : 
+These messages includes various messages like Execution Report(8), New Order Single(D), Cancel Request(F), Replace Request(G), Status Request(H), Quote(S) and many others.
+
+
+
+
+ 60-time of execution(7:59)
+ 122-Original time of message transmission(22:06)
+ 52-Time of message transmission(22:06)
+ 
+tag 43=Y/N 
+Y = Possible duplicate
+N = Original transmission 
