@@ -1,0 +1,46 @@
+continous delievery vs deployment
+manually deploy whereas here its all automatically
+
+plugins?
+Plugins are the primary means of enhancing the functionality of a Jenkins environment to suit organization- or user-specific needs. 
+There are over a thousand different plugins which can be installed on a Jenkins controller and to integrate various build tools, cloud providers, analysis tools, and much more.
+
+build?
+
+how to create a job?
+click  a new item-----it will show freestyle or pipeline or github---- save the job name
+
+How to configure SCM(source code management)?
+Once we have successfully created our Jenkins Job, the next task is configuring.
+We will configure the source code of our Jenkins Jobs using the FreeStyle Job in Jenkins
+configure----- Fill description General + SCM(none/git) + Build trigger+ build +post build action etc--- fill all those tabs then save
+
+
+how to build a job?
+click  a new item-----it will show freestyle/pipeline/multibranch pipeline ---- source code management---fill all details ----click on apply+save then BUILD
+
+
+what build name you usually give?
+#${BUILD_NUMBER} -  [${BUILD_USER_ID}]
+
+
+how to integrqate git with jenkins?
+dashboard---manage jenkins----manage plugins----install github
+dashboard---manage jenkins----global tool configuration----fill detais + save
+
+
+how to build a job pulled from github?
+click  a new item-----it will show freestyle ---- source code management(git)----github url paste it----click on apply+save then BUILD
+
+
+what is jenkins pipeline?
+Start---build---run tests (in linux/windows)----deplot---end
+
+https://kodekloud.com/lessons/labs-6/
+
+
+cron job timings
+
+* * * * *
+
+min hour day(1-31) month(1-12) week(sun-sat/0-6)
