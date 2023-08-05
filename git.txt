@@ -1,0 +1,524 @@
+
+GIT
+==================
+
+1.What is the difference between Git and SVN?
+
+Git is a Decentralized Version Control tool
+SVN is a  Centralized Version Control tool
+
+GIT-Clients can clone entire repositories on their local systems
+SVN-Version history is stored on a server-side repository
+
+GIT-Commits are possible even if offline
+SVN-Only online commits are allowed
+
+GIT-Push/pull operations are faster
+SVN-Push/pull operations are slower
+
+GIT-Works are shared automatically by commit
+SVN-Nothing is shared automatically.
+
+
+2.What is GIT?
+
+Git is a Distributed Version Control system(DVCS). 
+It lets you track changes made to a file and allows you to revert back to any particular change that you wish.
+
+It is a distributed architecture that provides many advantages over other Version Control Systems (VCS) like SVN.
+One of the major advantages is that it does not rely on a central server to store all the versions of a project’s files.
+
+Instead, every developer “clones‿ a copy of a repository I have shown in the diagram with “Local repository‿ and 
+has the full history of the project available on his hard drive.So when there is a server outage all you need to do to recover is one of your teammate’s local Git repository.
+
+There is a central cloud repository where developers can commit changes and share them with other teammates.
+
+
+
+3.What is a distributed VCS?
+
+These are the systems that don’t rely on a central server to store a project file and all its versions.
+
+In Distributed VCS, every contributor can get a local copy or “clone‿ of the main repository.
+
+As you can see in the above diagram, every programmer can maintain a local repository 
+which is actually the copy or clone of the central repository which is present on their hard drive. 
+They can commit and update their local repository without any hassles.
+
+With an operation called “pull‿, they can update their local repositories with new data from the central server and 
+“pull‿ operation affects changes to the main repository from their local repository.
+
+
+4.What is the difference between Git and Github?
+
+Git is a version control system of distributed nature that is used to track changes in source code during software development. 
+GitHub is a Git repository hosting service, plus it adds many of its own features. GitHub provides a Web-based graphical interface.
+
+
+5.What are the benefits of using Version Control System?
+
+With the Version Control System(VCS), all the team members are allowed to work freely on any file at any time. 
+VCS gives you the flexibility to merge all the changes into a common version.
+
+All the previous versions and variants are neatly packed up inside the VCS. 
+You can request any version at any time as per your requirement and you’ll have a snapshot of the complete project right at hand.
+
+Whenever you save a new version of your project, your VCS requires you to provide a short description of the changes that you have made. 
+Additionally, you can see what changes are made in the file’s content. This helps you to know what changes have been made in the project and by whom.
+
+A distributed VCS like Git allows all the team members to have a complete history of the project so if there is a breakdown in the central server you can use any of your teammate’s local Git repository.
+
+
+17. How to resolve a conflict in Git?
+
+The following steps will resolve conflict in Git-
+
+Identify the files that have caused the conflict.
+
+Make the necessary changes in the files so that conflict does not arise again.
+
+Add these files by the command git add.
+
+Finally to commit the changed file using the command git commit
+
+
+
+
+18. In Git how do you revert a commit that has already been pushed and made public?
+
+There can be two approaches to tackle this question and make sure that you include both because any of the below options can be used depending on the situation:
+
+Remove or fix the bad file in a new commit and then push it to the remote repository. This is the most obvious way to fix an error. Once you have made necessary changes to the file, then commit it to the remote repository using the command: git commit -m “commit message‿
+
+Also, you can create a new commit that undoes all changes that were made in the bad commit. To do this use the command
+
+git revert <name of bad commit>
+
+
+20. What is the difference between git pull and git fetch?
+Git pull command pulls new changes or commits from a particular branch from your central repository and updates your target branch in your 
+local repository.
+
+Git fetch is also used for the same purpose but it works in a slightly different way. 
+When you perform a git fetch, it pulls all new commits from the desired branch and stores it in a new branch in your local repository.
+If you want to reflect these changes in your target branch, git fetch must be followed with a git merge. 
+Your target branch will only be updated after merging the target branch and fetched branch. 
+Just to make it easy for you, remember the equation below:
+
+Git pull = git fetch + git merge 
+
+
+
+
+git rm [file]	deletes the file from your working directory and stages the deletion.
+git log----- 	list the version history for the current branch.
+
+git show [commit]---shows the metadata and content changes of the specified commit.
+git tag [commitID] ----used to give tags to the specified commit.
+
+git checkout [branch name]--- used to switch from one branch to another.
+git checkout -b [branch name]---creates a new branch and also switches to it.
+
+
+
+
+23. What is git stash?
+Often, when you’ve been working on part of your project, things are in a messy state and 
+you want to switch branches for some time to work on something else. The problem is, you don’t want to do a commit of half-done work just 
+so you can get back to this point later. The answer to this issue is Git stash.
+
+Stashing takes your working directory that is, your modified tracked files and staged changes and saves it on a stack of unfinished changes 
+that you can reapply at any time.
+
+
+If you want to continue working where you had left your work then ‘git stash apply‘ command is used to bring back the saved changes onto your current working directory
+
+
+‘git status’ shows you the difference between the working directory and the index
+‘git clone’ creates a new git repository by copying an existing one located at the URL
+
+
+
+
+27. What is git stash drop?
+Git ‘stash drop’ command is used to remove the stashed item. It will remove the last added stash item by default, and it can also remove a specific item if you include it as an argument.
+
+Now give an example.
+
+If you want to remove a particular stash item from the list of stashed items you can use the below commands:
+
+git stash list: It will display the list of stashed items like:
+stash@{0}: WIP on master: 049d078 added the index file
+stash@{1}: WIP on master: c264051 Revert “added file_size‿
+stash@{2}: WIP on master: 21d80a5 added number to log
+
+If you want to remove an item named stash@{0} use command git stash drop stash@{0}
+
+
+29. What is the function of ‘git config’?
+
+Suppose you want to give a username and email id to associate a commit with an identity so that you can know who has made a particular commit. For that I will use:
+
+git config –global user.name “Your Name‿: This command will add a username.
+git config –global user.email “Your E-mail Address‿: This command will add an email id.
+
+
+
+31. Describe the branching strategies you have used?
+
+Feature branching – A feature branch model keeps all of the changes for a particular feature inside of a branch.
+When the feature is fully tested and validated by automated tests, the branch is then merged into master.
+
+Task branching – In this model, each task is implemented on its own branch with the task key included in the branch name.
+It is easy to see which code implements which task, just look for the task key in the branch name.
+
+Release branching – Once the develop branch has acquired enough features for a release, you can clone that branch to form a Release branch.
+Creating this branch starts the next release cycle, so no new features can be added after this point, only bug fixes, documentation generation, and other release-oriented tasks should go in this branch.
+Once it is ready to ship, the release gets merged into master and tagged with a version number. 
+In addition, it should be merged back into the develop branch, which may have progressed since the release was initiated.
+
+In the end tell them that branching strategies vary from one organization to another 
+so I know basic branching operations like delete, merge, checking out a branch, etc.
+
+
+
+33. How will you know in Git if a branch has already been merged into master?
+
+The answer is pretty direct.
+
+To know if a branch has been merged into master or not you can use the below commands:
+
+git branch --merged – It lists the branches that have been merged into the current branch.
+git branch --no-merged – It lists the branches that have not been merged.
+
+
+
+37. How to remove a file from git without removing it from your file system?
+One has to be careful during a git add, else you may end up adding files that you didn’t want to commit. 
+However, git rm will remove it from both your staging area (index), as well as your file system (working tree), which may not be what you want.
+
+Instead, use git reset:
+
+git reset filename 
+
+
+
+
+38. Can you explain the Gitflow workflow?
+
+To record the history of the project, Gitflow workflow employs two parallel long-running branches – master and develop:
+
+Master – this branch is always ready to be released on LIVE, with everything fully tested and approved (production-ready).
+Hotfix – these branches are used to quickly patch production releases. These branches are a lot like release branches and feature branches except they’re based on master instead of develop.
+Develop – this is the branch to which all feature branches are merged and where all tests are performed. Only when everything’s been thoroughly checked and fixed it can be merged to the master.
+Feature – each new feature should reside in its own branch, which can be pushed to the develop branch as their parent one.
+
+
+
+
+40. What is Git fork? What is the difference between fork, branch, and clone?
+
+A fork is a copy of a repository. Normally you fork a repository so that you are able to freely experiment with changes without affecting the original project. Most commonly, forks are used to either propose changes to someone else’s project or to use someone else’s project as a starting point for your own idea.
+git cloning means pointing to an existing repository and make a copy of that repository in a new directory, at some other location. The original repository can be located on the local file system or on remote machine accessible supported protocols. The git clone command is used to create a copy of an existing Git repository.
+In very simple words, git branches are individual projects within a git repository. Different branches within a repository can have completely different files and folders, or it could have everything the same except for some lines of code in a file.
+
+
+
+44. What is git cherry-pick?
+
+The command git cherry-pick is normally used to introduce particular commits from one branch within a repository onto a different branch. 
+Another common use is to forward- or back-port commits from a maintenance branch to a development branch. 
+This is in contrast with other ways such as merge and rebase which normally apply many commits onto another branch.
+
+Consider:
+
+git cherry-pick <commit-hash>
+
+45. How do you find a list of files that have changed in a particular commit?
+
+git diff-tree -r {hash}
+Given the commit hash, this will list all the files that were changed or added in that commit. The -r flag makes the command list individual files, rather than collapsing them into root directory names only.
+The output will also include some extra information, which can be easily suppressed by including a couple of flags:
+
+git diff-tree --no-commit-id --name-only -r {hash}
+
+Here –no-commit-id will suppress the commit hashes from appearing in the output, and –name-only will only print the file names, 
+instead of their paths.
+
+
+
+
+
+working area----staging area/index----local repository
+
+
+mkdir dir
+
+git init dir ---you create a git repository
+
+
+
+git add filename ---add filename to staging area
+git add .--- add all files to staging area
+
+Only those files which are in staging would get committed not others
+
+git commit-- records changes made to the files in a your local repository. each commit has unique id.
+
+git commit -m " ...."
+
+
+git status
+it returns the current state of the repository
+returns current working branch
+if a file is in the staging area, but not committed , it shows with git status.
+if there are no changes , it will return nothing to commit, working directory clean.
+
+
+git has bydefault branch -master branch
+git branch----- would list all branches
+
+
+git branch  feature--will just create a new branch but u still present in yours master
+git checkout feature---will link to new branch
+git branch -b feture--- would create and moved/linked to new branch
+
+git  branch -d feature---shows unmeegre changes
+or
+git branch -D feature--
+
+
+Steps:
+git branch feature, 
+git checkout feature,
+git add, git commit, 
+git checkout master, 
+git merge feature
+
+how to connect to remote repository with your local repository:
+git remote add origin "get ssh link from github"
+
+
+how to clone a remote repository:
+git clone "get ssh link:
+
+Want the changes done in remote repository to your local:
+git pull origin master
+
+
+Want the changes in local repo to remote repository:
+git add file
+git status----shows something to commit
+git commit -m "message"
+git status-----show nothing to commit
+git push origin master
+
+
+
+git stash:
+when we switch b/w 2 tasks 
+
+
+
+git revert Head:
+it rollbacks
+
+
+=======================================
+git config
+Usage: git config –global user.name “[name]‿
+Usage: git config –global user.email “[email address]‿
+This command sets the author name and email address respectively to be used with your commits.
+
+
+git init
+Usage: git init [repository name]
+This command is used to start a new repository.
+
+
+git clone
+Usage: git clone [url]
+This command is used to obtain a repository from an existing URL.
+
+
+git add
+Usage: git add [file]
+This command adds a file to the staging area.
+
+
+
+
+git commit
+Usage: git commit -m “[ Type in the commit message]‿
+This command records or snapshots the file permanently in the version history.
+
+
+git reset
+Usage: git reset [file]
+This command unstages the file, but it preserves the file contents.
+
+
+
+git status
+Usage: git status
+This command lists all the files that have to be committed.
+
+
+git rm
+Usage: git rm [file]
+This command deletes the file from your working directory and stages the deletion.
+
+
+
+git log
+Usage: git log
+This command is used to list the version history for the current branch.
+
+
+
+git branch
+Usage: git branch
+This command lists all the local branches in the current repository.
+
+
+
+git branch [branch name]
+This command creates a new branch.
+
+
+git branch -d [branch name]
+This command deletes the feature branch.
+
+git checkout
+Usage: git checkout [branch name]
+This command is used to switch from one branch to another.
+
+git checkout -b [branch name]
+This command creates a new branch and also switches to it.
+
+
+git remote
+Usage: git remote add [variable name] [Remote Server Link]
+This command is used to connect your local repository to the remote server.
+
+
+
+git push
+Usage: git push [variable name] master
+This command sends the committed changes of master branch to your remote repository.
+Ex:git push origin master
+note :master is yours remote repository
+
+git push –all [variable name]
+This command pushes all branches to your remote repository.
+
+
+git pull
+Usage:  git pull [Repository Link]
+This command fetches and merges changes on the remote server to your working directory
+
+
+==========================================================
+
+ISSUES
+
+Un-stage files/directories from Index/staging directory
+Syntax: git reset <filename/dirname>
+
+
+
+=================================
+
+git vs github
+git is command line tool or underlying technology that enables versioning of code and collaboration b/w multiple developers
+github is git based public repository where we push/pull code and it has web interface where it invites new developers.
+github/gitlab/bitbucket------are remote repositories
+
+
+
+curl https://full line -O ------to get it download in file
+wget https://full line -O file.txt
+
+/etc/*release* -----to know the OS running
+
+service httpd status is same as systemctl status httpd
+
+
+networking
+switct connects 2 mobiles/systems in a single n/w
+router connects 2 or more separate n/w 
+
+/etc/hosts----details of all hosts
+/etc/passwd----to see if an user is enlisted
+
+
+www.google(domainname).com(top-level-domain)
+
+local repostary-----working area +staging area +commitnig files(MASTER branch)
+remote repostary-----
+
+
+git add filename -------goes to staging area
+git commit filename -m"add" ----its get committed
+
+
+git commit -----will open text editor and ask you to save it with a msg
+git add .  -------will add multiple files to staging area
+
+
+commit----- stores copy of file in current state
+
+git log------will show details like author, date, etc
+git log --name-only ------will show above + file name
+git log --oneline --- in one line
+
+
+git checkout -b new_branch------ creating + swtiching to a new_branch
+git branch new-name ------creating 
+git checkout name---- will only switch
+git branch -d branch_name -----will delete
+git branch ------ will list out
+
+
+branch ------it points to our last commit
+
+1. add a remote 
+git remote add <name_of_remote_git_repo> <remote_git_repo_url>.git 
+git remote add origin https://github.com/somename/xyz.git
+
+2.Push
+git push <remote> <branch> -------origin is remote and master is the branch you want to push
+
+git push origin master ------pushing local master to remote
+git push origin story/fox-and-grapes -----pushing story/fox local to remote
+
+git branch -a----- to know list of branches in local+remote
+
+forking in git ????
+
+
+==================================================
+
+git init                   //will initialise the repository
+git add filename           //will put file to staging
+git commit -m "message"   // will put file from staging to master
+git rm --cached filename //will put file from master to staging branch
+git restore  commit id     //will put file from  staging to unstage branch
+git log                  //will share all details like commit id, cureent branch etc
+git log --oneline
+git config --global user.name "mishrde"
+git config --global user.email "xyz"
+git remote -v
+git checkout branchname
+git branch
+git fetch
+git diff
+
+get restore commitID vs git reset commitID
+
+git push origin main
+git pull origin main
+
+git set-url --add/push/delete
+
+
