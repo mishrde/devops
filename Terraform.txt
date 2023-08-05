@@ -1,0 +1,18 @@
+terraform version
+terraform show ---- will show what resource you just created
+terraform destroy
+
+
+terraform init ---- Initialize prepares the working directory so Terraform can run the configuration. ALso initialize the plugin
+terraform plan
+terraform apply
+
+ Terraform follows an immutable infrastructure approach, the file was recreated although the contents are the same.
+ 
+ 
+terraform validate---- will check syntax
+terraform show
+terraform fmt ------it formats/aligns the them properly
+terraform output
+terraform refresh
+terraform graph
