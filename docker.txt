@@ -9,7 +9,7 @@ docker --version
 sudo service docker start
 
 sudo systemctl status docker
-sudo usermod -aG docker ${USER}
+sudo usermod -aG docker ${USER} ---------- this adds your user to docker group. So going fwd no need to run with sudo command.
 
 BASIC:
 docker info
