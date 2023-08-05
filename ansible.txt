@@ -1,0 +1,211 @@
+
+=========================
+ANSIBLE
+=========================
+
+Configuration managment(CM) tools
+will automate the admin tasks
+gives provisioning
+
+
+1. Control machine--wherever anisble is installed
+
+2. Playbooks---yaml file which automates specific tasks
+
+3. Inventory---target machines are called inventory
+
+
+
+Installation and configuration process
+Inventory
+Ansible Modules
+Ad-hoc commands,
+Task automation using playbooks
+Ansible roles
+Ansible vault
+Ansible and AWS
+
+
+1.Installation of Ansible using YUM
+
+a)Create a common id on both the machines, for Example, ansible with SUDO privileges.
+  This id will be used for communicating across all the machines involved for automation of tasks.
+  
+b) Edit the /etc/ssh/sshd_config file on the control machine and 
+   uncomment out the lines for PasswordAuthentication and PermitRootLogin  
+  
+c) systemctl restart sshd  
+
+d) To enable passwordless authentication to perform the steps shown below. 
+ Firstly add the user ansible to the /etc/sudoers file on both the machines 
+ which will enable the user ansible to run any command which requires root privileges.
+ 
+e) ssh-keygen
+ Copy the ssh key to the target machine and vice versa.
+
+   ssh-copy-id <IP-Address-Host-Machine>
+
+   ssh ansible@<IP-Address-Host-Machine>
+   
+f) We can now install ansible on the Control machine only by enabling the EPEL repo from fedora which provides add-on software packages
+   
+   $ wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm 
+   $ sudo rpm -ivh epel-release-latest-7.noarch.rpm
+   $ sudo yum install ansible -y 
+   $ ansible --version 
+  
+h) Edit the inventory file /etc/ansible/hosts and add all the servers which need to be managed.
+ 
+ 
+=================================================================
+ 
+Ansible consist of 3 main components
+
+Control Machine
+Inventory
+Playbook
+
+
+The control machine manages the execution of the Playbook.
+The Inventory file provides a complete list of all the target machines 
+on which various modules are run by doing an ssh connection and install the necessary software’s.
+The playbook consists of steps that the control mechanism will perform on the servers defined in the inventory file.
+
+
+To run single tasks or one time tasks we use modules
+
+$ ansible webservers –m command - an ‘uptime’
+$ ansible webservers –m command –a ‘hostname’
+
+$ ansible webservers –m command -a ‘cat temp.txt’
+
+add user
+$ ansible webservers -m user -a 'name=user1 password=user1' --become
+
+delete user
+$ ansible webservers -m user -a 'name=user1 state=absent' --become
+
+$ ansible webservers -m file -a 'dest=/home/ansible/niranjan.txt state=touch mode=600 owner=ansible group=ansible'
+$ ansible webservers -m file -a "dest=/home/ansible/vndir state=directory mode=755"
+
+delete a file:
+$ ansible webservers -m file -a "dest=/home/ansible/niranjan.txt state=absent"
+
+ 
+copy a file
+$ ansible webservers -m copy -a "src=sample.txt dest=/home/ansible/sample.txt"
+
+
+Install a s/w:
+$ ansible webservers –m yum -a “name=git state=present‿ --become
+
+=================================================
+
+To run multiple tasks, we use playbook
+Playbooks define variables, configurations, deployment steps, assign roles, perform multiple tasks. 
+For E.g. COPY / DELETE Files and Folders, install packages, start services.
+So primarily playbooks are defined to orchestrate the steps to multiple machines or servers and get them all to a certain desired state.
+Playbook is written in YAML format with a .yml file extension. 
+
+
+Playbook contains :
+Every playbook starts with 3 hyphens ‘—‘
+Host section – Defines the target machines on which the playbook should run. This is based on the Ansible inventory file.
+Variable section – This is optional and can declare all the variables needed in the playbook. 
+Tasks section – This section lists out all the tasks that should be executed on the target machine. It specifies the use of Modules.  
+
+To run any playbook:
+$ ansible-playbook <playbook.yml>
+
+To check the playbook for syntax errors:
+$ ansible-playbook <playbook.yml> --syntax-check
+
+
+Playbook.yml
+---
+
+Naming section
+- name: "Example playbook"
+  package: name=git
+state=present
+;
+;
+
+
+Example 2: Create a directory with the mode as 775 and owner/group as Ansible.
+
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Create directory
+    file: path=/home/ansible/niranjan state=directory mode=775 owner=ansible group=ansible
+	
+	
+Example 3: Create multiple directories. To create multiple directories with one single task you can use the loop with_items statement. 
+So when you run the below playbook it is interpreted as 3 different tasks.
+
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Create multiple directories
+  file: path={{item}} state=directory
+  with_items:
+  - '/home/ansible/vn1'
+  - '/home/ansible/vn2'
+  - '/home/ansible/vn3'
+
+
+  
+Example 4: Create a user. Let’s look at the user module to create and delete users in the playbook.
+
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Create User
+    user: name=niranjan password=niranjan groups=ansible shell=/bin/bash
+
+
+Example 12: Playbook to install vim editor and GIT on the target servers or machines.
+
+In this playbook, we have made use of the yum module to install the latest version of the software packages.
+
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install Package
+    yum: name=vim,git state=latest
+
+
+
+Example 13: Install Apache server. Save the below code and run playbook as shown below.
+
+---
+- hosts: webservers
+  become: true
+  tasks:
+  - name: Install Package
+    yum: name=httpd state=present
+  - name: Start httpd service
+     service: name=httpd state=started
+
+
+====================================================
+
+
+Ansible Vault allows you to encrypt the playbook to protect the confidential data.
+
+$ ansible-vault create jobagreement.yml
+
+$ ansible-vault encrypt existingfile.yml	 
+
+$ ansible-vault view jobagreement.yml
+
+$ ansible-vault edit users.yml
+
+$ ansible-vault rekey jobagreement.yml
+
+
