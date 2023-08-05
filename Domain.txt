@@ -1,0 +1,484 @@
+trading life cycle
+COLD DR vs HOT DR
+injection
+merchant solution, capital market and banking solution
+
+SWIFT- used for payments,clearing and settlement.
+
+===============================================================================
+reference data- data used for complete transaction gateway of ib
+instrument data used for transaction
+derivatives- any instrument whose value derive from underlying asset 
+equities-
+rhel 9
+oracle 11g
+queue to queue propagatation
+function n procedure
+nullify log
+RFC- request for change
+1.problem ticket
+2.business
+3.regulatory-mifid or brexit
+
+Six R's
+
+standard change-- 2 weeks cycle, rfc raise, ctb develop, we do prc(chechlist) n DR
+expaditory change--same as standard change but quick
+breakfix--
+operational change-- no downtime
+
+problem ticket:
+2 types
+1.reactive
+2.proactive--- alerts count we get in problem management 
+identify,ack,assigment,under
+
+iprod,outages
+
+1. Proactive Monitoring & Alerting
+Proactive monitoring is important to make sure corrective steps are taken to prevent issues like not meeting SLAs (Service Level Agreements). 
+More focus in this area will certainly reduce downstream issue resolution ticket volume. 
+Monitoring does not necessarily means keeping eye on each and every job constantly. 
+It is recommended to look for automations like developing an automated script which will send alerts to the support team periodically. 
+By building checkpoints into the job stream, you’ll minimize your monitoring efforts.
+
+
+2. Prioritize and Permanently Fix Issues
+
+3. Provide Timely Status Updates
+Effective communication involves all of the stakeholders. This is key to successfully managing production support. 
+Open lines of communication automatically reduces pressure and gives more time to fix issues rather
+than going into explanatory meetings that can last hours.
+
+  Acknowledge the issue
+  Analyze and communicate ETA
+  Send status updates every 15-20mins incase issue fixing takes longer. 
+  Notify all stakeholders on the resolution
+
+
+
+SLA
+tibco EMS
+
+================================================================================
+
+
+AMC n BMO?
+AMC:Stock details were given to SCB(back office) after market.
+BMO:Stock details were given to SCB(front office) before market.
+
+initipos n CA import?
+Portfolios(account details) are provided by SCB to FIS(seletor).
+CA :Corporate actions like any stock splits details are provided by SCB to FIS(selector)
+
+batch float file?
+Kind of, all details given to Hogan by FIS at 07:16 and 17:35 HKT.
+
+t24 file/xml?
+Risk related stocks are mentioned in this xml.
+
+CICS refresh from Hogan ?
+Mantainance window of SCB
+
+downtime of app ?
+5 to 7 hkt(6:15 to 6:30hkt)
+
+MIFID
+Like SEBI, its market regularotry in Europe.
+
+
+
+Nominal value
+
+
+Exchange is the place which facilates exchanges b/w buyers and sellers.
+
+
+
+securities are financial products issued by private or public enterprise to raise funds mainly equities/bonds
+
+Derivative is a financial product whose price depends on another product. It is derived from another product called underlying or support instrument.
+Underlying products can be a number of different products like:
+securities(bonds or stocks)
+Indices, currencies and raw materials
+
+Derivatives are contracts. no transfer of property instead contract signed for certain period of time.
+
+Derivatives = futures + Options
+
+
+
+Stock is a share in property.
+represents fraction of capital and holds/owns a part of company.
+Enjoy:
+righ to assets,profit,vote and information.
+
+Company or public can provide finance by issuing bonds.
+Lifspan of bond has a time limit.
+bondholding is less risky than shareholding
+
+Issue price is the price at which bond is issued.
+
+Portion of the stcok that can be traded in market is called floating stock or float.
+
+Futures
+Options
+Warrants
+
+================================================
+
+Market data:
+market data is price and trade-related data for a financial instrument reported by a trading venue such as a stock exchange.
+Market data allows traders and investors to know the latest price and see historical trends for instruments such as 
+equities, fixed-income products, derivatives, and currencies.
+
+
+Reference data encompasses a range of details such as a unique security number for the financial instrument or product being traded,
+the name of the buyer, seller or 
+any other party involved in the contract and the costs involved in the trade. 
+
+Reference data can be classified as static and dynamic.
+
+Static data – this type of data won’t change throughout the course of the transaction, and includes specifications 
+such as the names of the parties contracted in the financial transaction (ie. ‘counterparties’) and those in the financial supply chain,
+as well as information related to the financial products involved, such as their expiration dates or type.
+
+Dynamic data – information that changes throughout the course of the transaction, such as credit ratings or 
+the pricing of the instrument at different times or at the close of the deal.
+
+Thompson reuters and bloombergs are financial providers.
+
+================================================
+
+Asset class:
+Equities or stocks
+Fixed income or bonds
+Commodities or Physical goods such as gold, copper, crude oil, natural gas, wheat, corn, and even electricity.
+=================================================
+
+An exchange is a marketplace where securities, commodities, derivatives and other financial instruments are traded. 
+The core function of an exchange is to ensure fair and orderly trading and
+the efficient dissemination of price information for any securities trading on that exchange. 
+Exchanges give companies, governments and other groups a platform from which to sell securities to the investing public.
+
+=================================================
+
+Prerequistes for registeration in BSE:
+The paid up capital should be more than ?10 crores.
+The company needs to have a positive net worth.
+The company has not been declared bankrupt.
+
+=================================================
+
+The front office are revenue generating roles and roles that directly support the management of that business. Examples include Sales, trading and 
+research though a business manager or Chief Operating Officer (COO) for a desk or business would also be considered Front office.
+
+Middle Office are the IT, Finance and second line Risk functions. Examples include, IT, Product Control, Finance, compliance etc.
+Middle Office deals with compliance to rules and regulations and independent verification of risk that 
+Front office are dealing with as well as ensuring data is correctly reconciled with all the other functions that need it i.e tax, risk, finance etc.
+
+Back office is the administrative side of the bank that support the front office. Examples include Operations, (who can be middle office), 
+Settlements etc… that look at routing and clearing trades, or management payments.
+
+
+================================================
+
+A stock (also known as "shares" or "equity) is a type of security that signifies proportionate ownership in the issuing corporation.
+thee have:
+Right to vote
+Right to information.
+Right to profit.
+
+A bond is a loan to a company or government that pays back a fixed rate of return. It's a safer investment than stocks, but still has risks.
+Bonds are an asset class where the investor lends a government or business money for a set period of time, 
+with the promise of repayment of that money plus interest.
+
+Futures are financial contracts obligating the buyer to purchase an asset or the seller to sell an asset and have a predetermined future date and price.
+
+Warrant is a financial product which gives right to holder to Buy or Sell underlying financial security, 
+its similar to option with some differences e.g. Warrants are normally issued by banks while options are primarily traded in exchange
+
+
+
+
+Read more: https://javarevisited.blogspot.com/2010/12/fix-protocol-interview-questions.html#ixzz5uheLYgl0
+
+================================================
+
+Types of orders:
+1.Maerket order:
+if an investor places an order to purchase 100 shares, they receive 100 shares at the stock’s asking price.
+
+2.Limit order:
+if invester sells/buys order on his desire price when it reaches.
+
+3.stop order:
+if stock price reaches that lowest it would get sold automatically.
+
+================================================
+
+If demand is high , price is high
+If Supply is high , price is low.
+
+securities are financil products issued by private/ public enterprise to raise funds.
+
+derivatives are financial products whose price depends on another product.
+It is derivied from another product called underlying/support instrument.
+It is derivied from another product called underlying/support instrument.
+
+Underlying instruments can be:
+1.Securities(stocks or equities)
+2.Indicies (CAC 40,DOW Jones 30 etc)
+3.Currencies(Euro,Dollor,Yen etc)
+4.Raw materials(wheat,sugar etc)
+
+
+A stock is a share of a property. It represents a fraction of capital of a company, its holders owns a part of the company 
+
+
+securities are products that are physically traded: during the trade property is physically transfered from seller to buyer.
+
+Derivatives are contracts: there is no transfer of property istead contract is signed for certain period.
+
+EX:
+1. A mobile that belongs to buyer when leaving the store:Property is transferred from saleman to buyer.
+
+2. A contract b/w buyer and mobile company for certain period (like garrenty/warranty card)
+
+Derivaties divides into 2 parts:
+1.Futures:Contracts with fixed term
+2.Options:Contracts with conditional term.
+
+
+Stocks have nominal value which is equal to capital of company divided by total number of shares.
+This value is accounting purpose only and has nothing to do with real price of stock.
+
+banks,founders and main partners of bank hold large portion of capital which is therefore not available on market.
+The portion of stock in circulation is called the floating stock or FLOAT.
+
+The issuer (of the bond) is a borrower of capital and is committed to paying interest to bond scbscribers.
+Unlike stocks, bonds can be reimbursed.
+If company goes bankrupt,bondholers are paid before shareholders.
+Bondholding is less risky than stockholding.
+
+
+Nominal value:
+Ex:900 million could be divided into 900000 bonds with a nominal value of 1000.
+
+Issue price:
+This is the price at which the investor actually buys the bond. 
+It can be different from nominal value
+If issue price is less than nominal value, then bond is said to be trading in premium.
+
+Maturity:
+It is the time remaining until bond is reimbursed.
+
+Index is an indicator,made up of a basket of instruments that reflects the upward or downward trend
+in the price of a set of instruments at a given time with  respect to a refrence price.
+
+
+
+FUTURE:
+Future contract is an agreement b/w 2 counterparties to exchange a product called a support/underlying instrument
+at a future date and at a price established at the time of transaction.
+This commitment is firm and cannot be extended upon maturity.
+
+Future is defined as a contract, between two parties, buyer and seller 
+where both the parties promise to each other of buying or selling of the financial asset at an agreed date in the future and at a set price.
+As the contract is legally binding, the parties to it must perform it by transferring stock/cash respectively.
+
+The futures contract is a standardized and transferable contract that revolves around, 
+its four key elements,i.e. transaction date, price, buyer, and seller. 
+The items which are traded on the stock exchange like BSE OR NSE in a future contract include currencies, commodities, stocks and other similar financial assets.
+In such contracts the buyer expects the asset price to rise while the seller expects it to fall.
+
+
+EX:
+Orange juice seller needs 100 litres for Rs50.
+He made a contract for 6 months with company to get import with current price since he afraid price might rise in future.
+if price gets high, company would like to sell to some new bidders
+if price gets low, juice seller wants to purchase from market directly.
+Looking at this , there is a clearing house which looks after this and they charge for this called margin call or intial margin.
+Usually intital margin is 5-10%.
+Initial margin is difference b/w current price of future product and contract price of future product.
+If any party violets the contract, this margin call is used up.
+In short, in future contract maturity is fixed(price is as per contract).
+
+
+OPTIONS:
+The price at which buyer of option can use/exercise his rights i.e buy or sell the insturment.
+
+2 types:
+Buy option or Calls
+Sell option or Puts
+
+Ex:
+Orange juice needs sugar for next 6 months.They made contract.
+seller thinks:
+Sugar Price would fall so lets get contract on current price/rate.
+Sugar Price would rise, then i would break conract.
+
+Buyer thinks:
+Sugar Price would rise, lets sign contract with current price.
+Sugar Price would fall, then i would break contract.
+
+Whichever party pays the premium they have the right.
+
+An exchange traded derivative where the holder of the financial asset has the right to buy or sell securities at a certain price, on or before a stipulated date is regarded as an option.
+The predetermined price on which the trading is concluded is known as the strike price. 
+The option can be purchased by paying an upfront cost, which is non-refundable in nature, known as premium.
+
+The option to buy the underlying asset is call option while the option to sell the asset is put option.
+In both the cases, the right of exercising the option lies with the buyer only, but he is not obligated to do so.
+
+
+ 
+index????
+DFD orders?---when market closed, selector look first those orders which are planned but not get traded. Hence , after COB those orders get rejected.
+
+
+An ISIN is a code that uniquely identifies a specific securities issue.
+The numbers are allocated by a country's respective national numbering agency (NNA).
+A stock has a different ticker symbol depending on where it is traded.
+Stock has only one ISIN for each security.
+ISINs are used for numerous reasons including clearing and settlement.
+The numbers ensure a consistent format so that holdings of institutional investors can be tracked consistent across markets worldwide.
+
+All internationally traded securities issuers are urged to use the ISIN numbering scheme, which is now the accepted standard by virtually all countries.
+The United States and Canada primarily use a similar scheme known as a CUSIP number.
+
+
+ISIN is 12 digit number(2+9+1)
+1st 2 digits are country code, then 9 is computer generated and final acts as a check.
+
+An single ISIN can have multiple tickers/stock codes.
+
+
+
+
+
+Trade initiation- The investor informs the broker firm of the security they would like to buy/sell and 
+                  at what price along with other trade parameters including title of scheme, ISIN, exchange etc.,
+
+Trade execution- The order placed is matched for the price and quantity.
+
+Trade capture- The trade parameters are fed into the Risk Management System (RMS).
+
+Trade enrichment- Standard Settlement Instructions (SSI) are added from the RDM (Reference Data Management).
+
+Trade verification- Amongst other things trade parameters, whether the client placing the order has sufficient stocks to pay for the security and the limits are checked.
+
+Trade confirmation- Trade parameters of client and counter party are checked for matching and is approved for settlement.
+
+Trade settlement- The actual exchange between counter parties takes place—simultaneous exchange of cash versus securities for a security trade or cash versus cash for a Derivative trade.
+
+Trade reconciliation- Involves matching ledgers against statements to ensure correct accounting of all trades booked.
+
+
+
+
+“Long selling‿ means that you sell shares that you own, while “short selling‿ means you sell shares that you don’t own. Your account is short by that number of shares after your transaction if you short sell. “Long selling‿ is simply called selling, although the shares can be referred to as “long shares.‿
+
+If you sell shares that you don’t own, you will need to buy that number of shares later to make up for the shortage in your account. 
+If you think you can get them cheaper in the future, and you turn out to be correct, you will make money. When you short sell, you get paid right away.
+You would use part of that money to buy the shares back later, and the rest would be profit. 
+If the stock goes up instead, you would use all of that money, and then some more.
+ 
+ 
+
++++++++++++++++++++++++++++++++++++++++++++++++
+
+how to check mds server with port no.
+
+p3 is both cpnnection server and the communication intermediary b/w clien and servers.
+
+node- p3 identification no
+subnode - client/server identification no
+
+0<client id no <1000
+1000<= p3 id no<=30000
+1000<=servers id no<20000
+
+mds- live feed from exchanges
+sle- used to connect to exchange/broker.
+valdi trader=GLWin
+SGN team assign p3 nodes
+
+P3 can process messages in internal GL format and in API format.
+Phyiscal connection use tcp sockets.
+
+Once physical connection established, client sends a request to P3 for logical connection to servers.
+Logical connection use node-subnode pair.
+P3 sends connection request to server.
+server accepts or refuses request
+
+Logical connection can have 3 states:
+Awaiting confirmation
+Connected
+Disconnected-Interuption of physical disconnection,client requests disconnection(1102),server initiates disconnection.
+
+Once logical connection established, p3 :
+Transmits client enquires to appropriate server.
+Tranmits all data from a server to client concerned in real time.
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+BAU.
+1.disk space care.
+2.Order rejection requests(DFD order,SCB down,short sell,stock not present,etc)
+3.Alert monitoring and  checking
+4.Front end hung, so we restrt valdibusfe
+5.set holiday list
+6.Consumer not able to trade on a stock becos of its unavailablity. we chek with SGN to solve.
+7.Market connection is not established with broker due to higher sequence no or broker is not up.
+8.tracker issues
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+OMS vs EMS
+OMS provides PMs with a high level working view of the portfolio and generates orders from that view. 
+EMS provides traders with access to real time market data and access to various trading venues.
+
+broker and broker dealer and custodian?
+A broker is an individual or financial services company that enables the trading of securities for other individuals.
+A dealer is an individual or financial services company that enables the trading of securities for themselves.
+Custodians are generally large financial institutions that hold their customers' securities. Broker-dealers range in size and can buy, sell, or hold securities for their clients.
+
+
+trade bust?
+To cancel or break a transaction that has already been executed.
+
+
+
+stop order ?
+Stop Orders
+Isn’t visible to the market
+Tells broker to fill buy or sell order at specific price or better
+If the stock reaches the stop price, the order becomes a market order and is filled at the next available market price. 
+If the stock fails to reach the stop price, the order isn't executed.
+
+
+Limit Orders
+Visible to the market
+Activates market order when stop price is met
+even if the stock reached the specified limit price, your order may not be filled, because there may be orders ahead of yours. 
+In that case, there may not be enough (or additional) sellers willing to sell at that limit price, so your order wouldn't be filled.
+(Limit orders are generally executed on a first come, first served basis.) That said, it's also possible your order could fill at an even better price. 
+For example, a buy order could execute below your limit price, and a sell order could execute for more than your limit price.
+
+
+Day order
+A day order is a stipulation placed on an order to a broker to execute a trade at a specific price that expires at the end of the trading day if it is not completed. 
+A day order can be a limit order to buy or sell a security, but its duration is limited to the remainder of that trading day.
+
+done for day means?
+Order expired may be sent when a Good Til Date (GTD) order reaches its expiration date or a Good Til Cancel (GTC) order reaches its maximum age.
+That maximum age may be broker-specific and even unspecified, e.g. until the next major software release by the broker.
+
+Order Done for Day may be sent when a Day order is unfilled or partially filled at the end of the trading day and no further executions will be sent before the order is canceled.
+
+
+cancel vs cancel-replace?
+Completly cancelled all(Order Cancel)=F
+reduce/increase quantity,change limit price,change instructions(Order cancel+replace)= G
