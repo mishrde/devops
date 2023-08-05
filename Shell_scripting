@@ -1,0 +1,834 @@
+
+netstat vs lsof
+sed,awk, grep,find
+search 2nd largest salary
+top, 
+jstack id then kill process.
+
+#########################################################################
+
+zip file.zip file1 file2
+unzip file.zip
+
+gzip file.txt
+gunzip file.gz
+
+tar -tvf file.tar
+tar -ztvf file.tar.gz
+
+find ~ -type d -name "*selv5*" -print ----search directory recursively
+
+find . -name "*foo" ----search a file recursively(do searching from current directory)
+
+find / -name jvm ------will search everywhere with name jvm
+
+find / -type f -exec grep -l "wdog_collector-22" {} \; ------search for a file which contains wdog string
+
+find $PWD -name file_name -----shows the path where file resides
+
+jstack -l 37320 > /opt/tmp/threadDump.txt
+
+
+scp:
+scp filename mdf_prd or user@machinename:/path/..
+pass
+scp sel-sel-int.201904* scbhkrelay@10.160.1.3:/export/home/scbhkrelay/TEMP_PRI_ARCH_LOGS_MOVEMENT/valdi_scb_package
+
+
+sftp:
+sftp mdf_prd or user@machiname
+pass
+put filename(upload)
+get filename(download)
+nslookup machinename
+zipinfo filename
+
+telnet ip_address port
+last reboot
+
+while true
+do 
+"command"
+sleep 300
+done;
+
+########################################################################################
+
+bash shell(bash)
+c shell(csh)
+korn shell(ksh)
+bourn shell(sh)
+
+
+#!/bin/bash 
+Adding this as the first line of your script ensures that the script is interpreted using the bash shell.
+
+When no interpreter directive is given the script is interpreted using the default Bourne shell /bin/sh.
+
+#!/usr/bin/env python
+ 
+#!/usr/bin/env ruby
+ 
+#!/usr/bin/env ruby
+ 
+#!/usr/bin/env perl
+
+#! --shebang
+
+
+The prompt, $, which is called the command prompt, is issued by the shell. While the prompt is displayed, you can type a command.
+Shell reads your input after you press Enter.
+
+Bourne shell − If you are using a Bourne-type shell, the $ character is the default prompt.
+
+C shell − If you are using a C-type shell, the % character is the default prompt.
+
+
+under scbhkrelay
+/export/home/scbhkrelay/watcher/agents/survelog/conf/
+
+ssh dma@10.214.7.50
+password- own
+
+su - scbchecker
+password-cyberark
+
+
+cd scbhkrelay/valdi_fix/log/
+cd scbhkrelay/ubs_asia/slev5/log/
+
+
+
+============================================================================
+
+
+VAR1="Zara Ali"
+VAR2=100
+
+
+Example:
+
+#!/bin/sh
+
+NAME="Zara Ali"
+echo $NAME
+
+echo "Please enter gender"
+read gender----------------takes value from user
+
+echo "$gender"
+or
+echo $gender
+
+
+To access any variable ,put "$" commandprompt or symbol.
+
+
+Readonly:
+
+After a variable is marked read-only, its value cannot be changed.
+
+EXample:
+
+#!/bin/bash
+
+NAME="Deepen"
+
+readonly NAME
+
+NAME="Mishra"
+
+O/P:
+
+./sample.sh
+./sample.sh: line 8: NAME: readonly variable
+
+Unset or Delete:
+to change or delete the value assigned to a variable
+
+#!/bin/sh
+
+NAME="Zara Ali"
+unset NAME
+echo $NAME
+
+
+local variables:
+A variable declared as local is one that is visible only within the block of code in which it appears.
+It has local "scope". In a function, a local variable has meaning only within that function block.
+
+#!/bin/bash
+
+func ()
+{
+local var= 100   #local variable 
+global_var=37    #  Visible only within the function block
+                 #+ before the function has been called. 
+}                #  END OF FUNCTION
+
+echo "global_var = $global_var"  # global_var =
+                                 #  Function "func" has not yet been called,
+                                 #+ so $global_var is not visible here.
+
+func                             #function func is called
+echo "global_var = $global_var"  # global_var = 37
+                                 # Has been set by function call.
+echo var                         #cannot call local variable
+								 
+
+$ echo $$     # tells PID
+32083
+$ echo shell  #tells current shell
+shell
+
+
+
+Environment variables:
+
+Environment variables are dynamic values which affect the processes or programs on a computer.
+They exist in every operating system, but types may vary.
+Environment variables can be created, edited, saved, and deleted and give information about the system behavior.
+
+Ex:
+USER,PATH,SHELL,HOME
+
+echo $SHELL
+tells about current shell
+
+
+echo $VARIABLE	                To display value of a variable
+env	                            Displays all environment variables
+VARIABLE_NAME= variable_value	Create a new variable
+unset                       	Remove a variable
+
+
+
+[ops@linfmhk09 ~]$ ps -ef | head -5
+UID        PID  PPID  C STIME TTY          TIME CMD
+root         1     0  0 Sep15 ?        00:00:32 init [3]
+root         2     1  0 Sep15 ?        00:00:05 [migration/0]
+ops      29790 28647  0 22:24 ?        00:00:00 sleep 10
+507      29847 10733  0 22:24 ?        00:00:00 sleep 10
+
+
+UID:
+User ID that this process belongs to (the person running it)
+
+PID:
+Process ID
+
+PPID:
+Parent process ID (the ID of the process that started it)
+
+
+C:
+CPU utilization of process
+
+
+STIME:
+Process start time
+
+
+TTY:
+Terminal type associated with the process
+
+
+TIME:
+CPU time taken by the process
+
+
+CMD:
+The command that started this process
+
+
+ps -ef 
+or 
+ps -aux:
+
+-a
+Shows information about all users
+
+	
+-x
+Shows information about processes without terminals
+
+
+-u
+Shows additional information like -f option
+
+
+-e
+Displays extended information
+
+
+
+Killing a process:
+
+kill PID
+or
+kill -9 PID
+
+
+Daemon Processes
+Daemons are system-related background processes that often run with the permissions of root and services requests from other processes.
+A daemon has no controlling terminal. It cannot open /dev/tty. If you do a "ps -ef" and look at the tty field, all daemons will have a ? for the tty.
+
+TOP:
+The top command is a very useful tool for quickly showing processes sorted by various criteria.
+It is an interactive diagnostic tool that updates frequently and shows information about physical and virtual memory, 
+CPU usage, load averages, and your busy processes.
+
+
+ping:
+The ping command sends an echo request to a host available on the network.
+Using this command, you can check if your remote host is responding well or not
+
+
+$ ping jumphkprod01
+PING jumphkprod01 (127.0.0.1) 56(84) bytes of data.
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=1 ttl=64 time=0.019 ms
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=2 ttl=64 time=0.029 ms
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=3 ttl=64 time=0.033 ms
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=4 ttl=64 time=0.033 ms
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=5 ttl=64 time=0.028 ms
+64 bytes from jumphkprod01 (127.0.0.1): icmp_seq=6 ttl=64 time=0.030 ms
+
+--- jumphkprod01 ping statistics ---
+6 packets transmitted, 6 received, 0% packet loss, time 4999ms
+rtt min/avg/max/mdev = 0.019/0.028/0.033/0.007 ms
+[dma@jumphkprod01 ~]$
+
+
+
+
+sftp:
+sftp mdf_prd or user@machiname
+password
+put filename(upload)
+get filename(download)
+
+for multiple files:
+mput filenames
+mget filenames
+
+
+TELNET:
+
+
+telnet machinename port
+telnet 138.206.116.129 10086
+
+how to exit:
+
+press ctrl }
+exit
+
+
+ARRAY:
+
+NAME[0]="Zara"
+NAME[1]="Qadir"
+NAME[2]="Mahnaz"
+NAME[3]="Ayan"
+NAME[4]="Daisy"
+echo "First Method: ${NAME[*]}"
+echo "First Index: ${NAME[0]}"
+
+
+OPERATORS:
+
+Arithmetic Operators
+Relational Operators
+Boolean Operators
+String Operators
+File Test Operators
+
+
+#!/bin/sh
+
+val=`expr 2 + 2`
+echo "Total value : $val"
+
+O/P:
+Total value : 4
+
+
+Arithmetic Operators:
+
++ (Addition)	Adds values on either side of the operator`expr $a + $b` 
+- (Subtraction)	Subtracts right hand operand from left hand operand	`expr $a - $b` 
+* (Multiplication)	Multiplies values on either side of the operator	`expr $a \* $b` 
+/ (Division)	Divides left hand operand by right hand operand	`expr $b / $a` 
+% (Modulus)	Divides left hand operand by right hand operand and returns remainder	`expr $b % $a` 
+= (Assignment)	Assigns right operand in left operand	a = $b would assign value of b into a
+== (Equality)	Compares two numbers, if both are same then returns true.	[ $a == $b ] would return false.
+!= (Not Equality)	Compares two numbers, if both are different then returns true.	[ $a != $b ] would return true.
+
+
+Relational Operators:
+
+-eq	Checks if the value of two operands are equal or not; if yes, then the condition becomes true.	[ $a -eq $b ] is not true.
+-ne	Checks if the value of two operands are equal or not; if values are not equal, then the condition becomes true.	[ $a -ne $b ] is true.
+-gt	Checks if the value of left operand is greater than the value of right operand; if yes, then the condition becomes true.	[ $a -gt $b ] is not true.
+-lt	Checks if the value of left operand is less than the value of right operand; if yes, then the condition becomes true.	[ $a -lt $b ] is true.
+-ge	Checks if the value of left operand is greater than or equal to the value of right operand; if yes, then the condition becomes true.	[ $a -ge $b ] is not true.
+-le	Checks if the value of left operand is less than or equal to the value of right operand; if yes, then the condition becomes true.	[ $a -le $b ] is true.
+
+
+Backslash
+Any character immediately following the backslash loses its special meaning.
+
+	
+Back quote
+Anything in between back quotes would be treated as a command and would be executed.
+
+
+cat tst.txt > sample.txt
+man pwd
+$ passwd
+
+
+#1) Environment variables:
+
+#2) User-defined variables:
+
+1	
+cat filename
+Displays a filename
+
+2	
+cd dirname
+Moves you to the identified directory
+
+3	
+cp file1 file2
+Copies one file/directory to the specified location
+
+4	
+file filename
+Identifies the file type (binary, text, etc)
+
+5	
+find filename dir
+Finds a file/directory
+
+6	
+head filename
+Shows the beginning of a file
+
+7	
+less filename
+Browses through a file from the end or the beginning
+
+8	
+ls dirname
+Shows the contents of the directory specified
+
+9	
+mkdir dirname
+Creates the specified directory
+
+10	
+more filename
+Browses through a file from the beginning to the end
+
+11	
+mv file1 file2
+Moves the location of, or renames a file/directory
+
+12	
+pwd
+Shows the current directory the user is in
+
+13	
+rm filename
+Removes a file
+
+14	
+rmdir dirname
+Removes a directory
+
+15	
+tail filename
+Shows the end of a file
+
+16	
+touch filename
+Creates a blank file or modifies an existing file or its attributes
+
+17	
+whereis filename
+Shows the location of a file
+
+18	
+which filename
+Shows the location of a file if it is in your PATH
+
+
+
+The first way to manage your partition space is with the df (disk free) command.
+The command df -k (disk free) displays the disk space usage in kilobytes.
+
+
+The du (disk usage) command enables you to specify directories to show disk space usage on a particular directory.
+This command is helpful if you want to determine how much space a particular directory is taking.
+
+netstat
+Prints network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
+
+uptime
+This is System Load Average.
+
+1	
+compress
+
+Compresses files
+
+2	
+gunzip
+
+Helps uncompress gzipped files
+
+3	
+gzip
+
+GNU alternative compression method
+
+4	
+uncompress
+
+Helps uncompress files
+
+5	
+unzip
+
+List, test and extract compressed files in a ZIP archive
+
+6	
+zcat
+
+Cat a compressed file
+
+7	
+zcmp
+
+Compares compressed files
+
+8	
+zdiff
+
+Compares compressed files
+
+9	
+zmore
+
+File perusal filter for crt viewing of compressed text
+
+
+=====
+
+#!/bin/bash
+
+var="1.1.1.1.1"
+new2=${var/./_}
+echo $new2 ------------1_1.1.1.1
+
+
+#!/bin/bash
+var="1.1.1.1.1"
+new2="${var//./_}"
+echo "$new2"       # prints 1_1_1_1_1
+
+
+==============================
+
+#!/bin/bash
+
+echo "Please enter the Bid which you want to add"
+read bid
+
+if ( echo "$bid" | grep -q ' ' ); then
+  echo "Bloombergid you entered has space,pls check again"
+  exit 1;
+else
+  if [[ $bid == *['!'@#\$%^\&*()_+]* ]];then
+  echo "You entered one of the special chars in bid i.e *['!'@#\$%^\&*()_+]*"
+  exit 1;
+  fi;
+fi
+
+echo "Please enter the product id"
+read prodid
+echo "Please enter the exchange id"
+read exid
+
+
+abid=${bid/./ }
+abid2="$abid Equity"
+
+echo "Below command needs to be pasted in adhoc and tmpoveride files and then restart symupdate jobs"
+final="UpdateMarket=$prodid,ExchangeID=$exid|Bid=$bid,AltBid=$abid,AltBid2=$abid2"
+echo $final
+
+echo "please approve(y/yes/Yes/YES) to proceed to automatically copy it in adhoc file"
+read response
+if [[ $response == "y" || $response == "Y" || $response == "yes" || $response == "Yes" || $response == "YES" ]];then
+
+       if [[ -f "/var/redi/devops/test/adhoc" ]];then
+          echo "adhoc file is already present,taking 1st backup and then copying the details"
+          cp -p /var/redi/devops/test/adhoc /var/redi/devops/test/adhoc_`date +"%Y%m%d_%H%M"`
+          echo "$final" > /var/redi/devops/test/adhoc
+       else
+          touch /var/redi/devops/test/adhoc
+          echo "$final" > /var/redi/devops/test/adhoc
+       fi
+else
+ echo "You typed something else, EXITING...."
+ exit 1;
+fi
+
+
+
+exit 0;
+
+==================
+[mishrad@c1bbcp1029 (CHEF_ENV:) ~/test]$/home/mishrad/test/bid_test.sh
+
+
+#!/bin/bash
+
+home=/home/mishrad/test
+file=/home/mishrad/test/adhoc
+
+
+echo "Please enter the Bid which you want to add"
+read bid
+
+if ( echo "$bid" | grep -q ' ' ); then
+  echo "Bloombergid you entered has space,pls check again"
+  exit 1;
+else
+  if [[ $bid == *['!'@#\$%^\&*()_+]* ]];then
+  echo "You entered one of the special chars in bid i.e *['!'@#\$%^\&*()_+]*"
+  exit 1;
+  fi;
+fi
+
+echo "Please enter the product id"
+read prodid
+echo "Please enter the exchange id"
+read exid
+
+
+abid=${bid/./ }
+abid2="$abid Equity"
+
+echo "Below command needs to be pasted in adhoc and tmpoveride files and then restart symupdate jobs"
+final="UpdateMarket=$prodid,ExchangeID=$exid|Bid=$bid,AltBid=$abid,AltBid2=$abid2"
+echo $final
+
+echo "please approve(y/yes/Yes/YES) to proceed, it will automatically copy details in adhoc file"
+read response
+if [[ $response == "y" || $response == "Y" || $response == "yes" || $response == "Yes" || $response == "YES" ]];then
+
+       if [[ -f "$file" ]];then
+          echo "adhoc file is already present,taking 1st its backup and then copying the details in new adhoc file"
+          cp -p $file $home/adhoc_`date +"%Y%m%d_%H%M"`
+          echo "$final" > $file
+          echo "Now just restart symupdate jobs"
+       else
+          echo "No existing adhoc file present hence creating a new one"
+          touch $file
+          echo "$final" > $file
+          echo "Now pls restart symupdate jobs"
+       fi
+else
+ echo "You typed something else (other than y/yes/Yes/YES), EXITING...."
+ exit 1;
+fi
+
+
+
+exit 0;
+
+======================================
+#!/bin/bash
+
+##This script deletes the directories for more than 14 days or 2 weeks old.
+
+echo "Below directories are more than 14days or 2 weeks old:"
+dir=$(find .-type d -mtime +14)
+echo "$dir"
+echo "Do you want to delete these above directories(y/n):"
+read response
+
+if [[ $response == "y" ]];then
+      rm -rf $dir
+	  #df -kh| tail -2| head -1
+	  exit 0
+else
+      echo "ok- deleting nothing"
+
+fi
+exit 0;
+
+
+=================================================
+
+#!bin/bash
+
+
+###get the available space left on the device
+size=$(df -k /var/redi | tail -1 | awk '{print $5}'| cut -b 1-2)
+#echo $size
+
+
+###path where directories reside
+path="/var/redi/runtime/cleanup/clean"
+#echo $path
+
+
+
+###directories which need to be deleted
+dir=$(find $path -type d -mtime +14)
+#echo $dir
+
+
+###delete the directories if it exceeds greater than 90%
+if (($size>90)); then
+          #echo "not good"
+           rm -rf $dir
+           exit 0;
+else
+           #echo "good"
+           exit 1;
+fi
+
+exit 0;
+
+
+
+======================================================================================================
+
+#!bin/bash
+
+# Day 2 Bash Scripting Challenge - Interactive File and Directory Explorer
+
+
+echo -e "\nList of files and directories with their size in current path \n$PWD"
+ls -lrth | awk '{print $9, $5}'
+
+while true
+do
+        echo -e "\nDO you want to continue(y|Y) the same or break(n|N)"
+        read choice
+        case "$choice" in
+                n|N) break ;;
+                y|Y) ls -lrth| awk '{print $9, $5}' ;;
+                *) echo "Invalid response"
+        esac
+done;
+
+# Character Counting
+
+echo -e "ENter your sentence"
+read sent1
+echo -n $sent1| wc -m
+
+while true
+do
+        echo "DO you want to continue(y|Y) or break(n|N)?"
+        read choice1
+        case "$choice1" in
+                n|N) echo "Goodbye! End of script"
+                        break ;;
+                y|Y) echo "Enter Another sentence"
+                       read sent2
+                        echo -n $sent2| wc -m  ;;
+                *) echo "Invalid reponse"
+        esac
+done;
+
+
+ubuntu@ip-172-31-89-173:~/shellscripts/BashBlaze-7-Days-of-Bash-Scripting-Challenge/Challenges/Day_2$ 
+
+=======================================================================================================
+
+#!bin/bash
+
+#Author: Deepen Mishra
+#This script creates a backup whenever it runs and also only keep last 3 backups.Note: You need to provide directory path in commandline while running the script
+
+cp -rf $1 $1_backup_`date +"%Y%m%d_%H%M%S"`
+
+echo -e "Backup created at path: " 
+find . -type d -name "*backup*" | sort -r|awk 'NR<2'
+
+find . -type d -name "*backup*" | sort -r | awk 'NR>3' | xargs rm -rf
+#find . -type d -name "*backup*" -mtime -5 -exec rm -rf {} \;
+~                                                                                                                                                     
+~                                                                       
+
+
+
+
+==============================================================
+
+
+how to search a file which has details inside like deepen in a whole server?
+only want to see tag "11=" nothing else. so which command? grep -o
+sed and awk?
+public ip vs private ip? how to connect via private ip?
+
+
+docker, Ansible, git, jenkins interview questions
+AWS---- ec2 and s3
+types of docker containers?
+
+
+Explain your roles and responsiblities?
+out of 9 balls which one is lighter?
+
+
+
+truncate -s 0 file.txt 
+it will shrink the size of file to 0 bytes.
+
+==============================
+
+sed
+
+sed 's/unix/linux/' geekfile.txt --------substitue unix with linux(1st occurance)
+
+sed -i 's/unix/linux/' geekfile.txt -----will do permanent change to the orginal file contents
+
+sed 's/unix/linux/g' geekfile.txt-------will replace all(globally) unix with linux
+
+sed '$d' filename.txt----- delete the last line of a file
+
+sed '5d' filename.txt----- delete 5th line of a file
+
+sed '3,6d' filename.txt----delete from 3rd to 6th line
+
+===============================
+
+awk
+awk '{print $5}' diskpace.txt| head -2| grep -1
+
+find / -type f -exec grep -l "wdog_collector-22" {} \;
+
+
+autosys jobs- office vs onice
+
+Onhold---dependent jobs wont run. If made offhold and starting conditions met then it will run.
+Onice---Dependent jobs will run. If made office and starting conditions met then also it wont run. Will run next day or force start now
+
+=========================================================
+sp_help table_name ------will list all column names
+
+
+
+====================================================
+
+
+
